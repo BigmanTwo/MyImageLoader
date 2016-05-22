@@ -1,6 +1,7 @@
 package com.example.asus.myimageloader;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,22 +11,32 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 public class MainActivity extends AppCompatActivity {
         private ImageView mImageView;
     private MyThread myThread;
-    private Button mButton;
+    private Button mButton,mButton1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mImageView=(ImageView)findViewById(R.id.img_text);
         mButton=(Button)findViewById(R.id.fresco_but);
+        mButton1=(Button)findViewById(R.id.load_but);
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,MyFrescoActivity.class);
+                startActivity(intent);
+            }
+        });
+        mButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,MyLoderImage.class);
                 startActivity(intent);
             }
         });
@@ -45,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
                     .displayer(new FadeInBitmapDisplayer(100))
                     .build();
             ImageLoader.getInstance().displayImage(str,mImageView,options);
+
+
+
+
         }
     }
 }

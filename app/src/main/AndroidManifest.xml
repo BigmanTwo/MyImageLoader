@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyFrescoActivity"></activity>
+        <activity android:name=".MyFrescoActivity" />
+        <activity android:name=".MyLoderImage"></activity>
     </application>
 
 </manifest>
